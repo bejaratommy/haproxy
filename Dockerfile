@@ -6,8 +6,8 @@ RUN apk add \
 
 FROM build-base AS build-openssl
 WORKDIR /tmp/openssl
-ARG OPENSSL_VERSION="3.5.5"
-ADD --checksum=sha256:b28c91532a8b65a1f983b4c28b7488174e4a01008e29ce8e69bd789f28bc2a89 https://github.com/openssl/openssl/releases/download/openssl-$OPENSSL_VERSION/openssl-$OPENSSL_VERSION.tar.gz /tmp/openssl.tar.gz
+ARG OPENSSL_VERSION="3.6.1"
+ADD --checksum=sha256:b1bfedcd5b289ff22aee87c9d600f515767ebf45f77168cb6d64f231f518a82e https://github.com/openssl/openssl/releases/download/openssl-$OPENSSL_VERSION/openssl-$OPENSSL_VERSION.tar.gz /tmp/openssl.tar.gz
 RUN tar -xzvf /tmp/openssl.tar.gz --strip-components=1 \
     && ./config --prefix=/opt/openssl --no-shared \
     && make -j"$(nproc)" \
@@ -35,7 +35,7 @@ FROM build-base AS build
 RUN apk add \
       ca-certificates
 WORKDIR /tmp/haproxy
-ADD --checksum=sha256:5063eccd818a0bb131a7529ca9824da952697fbf777de0c8376ad610a66173ac https://www.haproxy.org/download/3.3/src/haproxy-3.3.4.tar.gz /tmp/haproxy.tar.gz
+ADD --checksum=sha256:9de6e765b426f07c1080aadd2fba5b682a1cc175fe8eb45d5eb948292a866e02 https://www.haproxy.org/download/3.3/src/haproxy-3.3.5.tar.gz /tmp/haproxy.tar.gz
 RUN tar -xzvf /tmp/haproxy.tar.gz --strip-components=1
 COPY --from=build-openssl /opt/openssl ./openssl
 COPY --from=build-pcre /opt/pcre ./pcre
