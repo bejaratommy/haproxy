@@ -9,6 +9,7 @@
 ## Features
 
 * Compiled from source during build time
+* Bundles OpenSSL 4.0.3, PCRE2 10.49, and zlib 1.3.2
 * Built `FROM scratch`, with zero bloat
 * Reduced attack surface (no shell, no UNIX tools, no package manager...)
 * Runs as unprivileged (non-`root`) user
@@ -20,13 +21,13 @@
 
 Available on Docker Hub as [`docker.io/ricardbejarano/haproxy`](https://hub.docker.com/r/ricardbejarano/haproxy):
 
-- [`3.4.5`, `latest` *(Dockerfile)*](Dockerfile)
+- [`3.4.6`, `latest` *(Dockerfile)*](Dockerfile)
 
 ### RedHat Quay
 
 Available on RedHat Quay as [`quay.io/ricardbejarano/haproxy`](https://quay.io/repository/ricardbejarano/haproxy):
 
-- [`3.4.5`, `latest` *(Dockerfile)*](Dockerfile)
+- [`3.4.6`, `latest` *(Dockerfile)*](Dockerfile)
 
 
 ## Configuration
