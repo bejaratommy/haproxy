@@ -24,8 +24,8 @@ RUN tar -xzvf /tmp/pcre.tar.gz --strip-components=1 \
 
 FROM build-base AS build-zlib
 WORKDIR /tmp/zlib
-ARG ZLIB_VERSION="1.3.2"
-ADD --checksum=sha256:bb329a0a2cd0274d05519d61c667c062e06990d72e125ee2dfa8de64f0119d16 https://zlib.net/zlib-$ZLIB_VERSION.tar.gz /tmp/zlib.tar.gz
+ARG ZLIB_VERSION="1.4"
+ADD --checksum=sha256:02dd159783677a749c04adbdd02b55b8a2bcc7e054f51b76b549199a916ad584 https://zlib.net/zlib-$ZLIB_VERSION.tar.gz /tmp/zlib.tar.gz
 RUN tar -xzvf /tmp/zlib.tar.gz --strip-components=1 \
     && ./configure --prefix=/opt/zlib --static \
     && make -j"$(nproc)" \
@@ -35,7 +35,7 @@ FROM build-base AS build
 RUN apk add \
       ca-certificates
 WORKDIR /tmp/haproxy
-ADD --checksum=sha256:ccfd342f3724c2cd659574044d788f44e20b212467c6bd5edbbfc517a2775dca https://www.haproxy.org/download/3.4/src/haproxy-3.4.7.tar.gz /tmp/haproxy.tar.gz
+ADD --checksum=sha256:024bd521a6cbbe32b426853147e6bbd6a89b107c5a34144846193fee5b7c6ed1 https://www.haproxy.org/download/3.4/src/haproxy-3.4.8.tar.gz /tmp/haproxy.tar.gz
 RUN tar -xzvf /tmp/haproxy.tar.gz --strip-components=1
 COPY --from=build-openssl /opt/openssl ./openssl
 COPY --from=build-pcre /opt/pcre ./pcre
